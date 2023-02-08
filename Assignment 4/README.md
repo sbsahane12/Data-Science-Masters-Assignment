@@ -78,24 +78,16 @@ Q5. Create a generator function for prime numbers less than 1000. Use the next()
 <pre>
 <code>
 #a generator function for prime numbers less than 1000. Use the next() method to print the first 20 prime numbers.
-def primes():
-    """Create a generator function for prime numbers less than 1000."""
-    yield 2
-    primes_list = [2]
-    for i in range(3, 1000):
-        is_prime = True
-        for prime in primes_list:
-            if i % prime == 0:
-                is_prime = False
+def gen(n):
+    for i in range(n+1):
+        for y in range(2,i):
+            if i%y==0:
                 break
-        if is_prime:
-            primes_list.append(i)
+        else:
             yield i
-
-prime_gen = primes()
-# the next() method to print the first 20 prime numbers.
-for i in range(20):
-    print(next(prime_gen))
+x=gen(1000)
+for i in x:
+    print(i)
 </code>
 </pre>
 Q6. Write a python program to print the first 10 Fibonacci numbers using a while loop.<br/>
@@ -128,20 +120,17 @@ Q8. Write a python program to check whether a given number is Palindrome or not 
 <pre>
 <code>
 #a python program to check whether a given number is Palindrome or not using a while loop.
-n = int(input("Please give a number : "))
-def reverse(num):
-    if num<10:
-      return num 
-    else:
-      return int(str(num%10) + str(reverse(num//10)))
-def isPalindrome(num):
-    if num == reverse(num):
-        return 1
-    return 0
-if isPalindrome(n) == 1:
-    print("Given number is a palindrome")
+n=int(input("Enter number:"))
+temp=n
+rev=0
+while(n>0):
+    dig=n%10
+    rev=rev*10+dig
+    n=n//10
+if(temp==rev):
+    print("The number is a palindrome!")
 else:
-    print("Given number is a not palindrome") 
+    print("The number isn't a palindrome!")
 </code>
 </pre>
 Q9. Write a code to print odd numbers from 1 to 100 using list comprehension.<br/>
